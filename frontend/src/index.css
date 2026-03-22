@@ -1,0 +1,17 @@
+@import "tailwindcss";
+
+/* PoE-inspired dark theme */
+:root {
+  --poe-gold: #c8aa6e;
+  --poe-red: #e74c3c;
+  --poe-green: #2ecc71;
+  --poe-blue: #3498db;
+  --poe-bg: #0a0a0f;
+  --poe-card: #12121a;
+  --poe-border: #2a2a3a;
+}
+
+body {
+  background-color: var(--poe-bg);
+  color: #e0e0e0;
+}

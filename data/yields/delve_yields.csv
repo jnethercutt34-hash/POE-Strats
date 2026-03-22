@@ -1,0 +1,67 @@
+item_name,ninja_type,investment_tier,base_yield_per_map,notes
+Pristine Fossil,Fossil,low,2.0,Common fossil node
+Pristine Fossil,Fossil,medium,4.0,With polished scarab
+Pristine Fossil,Fossil,high,6.5,With gilded scarab + atlas passives
+Jagged Fossil,Fossil,low,2.0,Common fossil node
+Jagged Fossil,Fossil,medium,3.5,With polished scarab
+Jagged Fossil,Fossil,high,5.5,With gilded scarab + atlas passives
+Dense Fossil,Fossil,low,1.5,
+Dense Fossil,Fossil,medium,3.0,
+Dense Fossil,Fossil,high,5.0,
+Aberrant Fossil,Fossil,low,1.5,
+Aberrant Fossil,Fossil,medium,3.0,
+Aberrant Fossil,Fossil,high,5.0,
+Scorched Fossil,Fossil,low,1.0,
+Scorched Fossil,Fossil,medium,2.0,
+Scorched Fossil,Fossil,high,3.5,
+Frigid Fossil,Fossil,low,1.0,
+Frigid Fossil,Fossil,medium,2.0,
+Frigid Fossil,Fossil,high,3.5,
+Metallic Fossil,Fossil,low,1.0,
+Metallic Fossil,Fossil,medium,2.0,
+Metallic Fossil,Fossil,high,3.5,
+Serrated Fossil,Fossil,low,0.8,
+Serrated Fossil,Fossil,medium,1.5,
+Serrated Fossil,Fossil,high,2.5,
+Bound Fossil,Fossil,low,0.5,
+Bound Fossil,Fossil,medium,1.0,
+Bound Fossil,Fossil,high,2.0,
+Lucent Fossil,Fossil,low,0.5,
+Lucent Fossil,Fossil,medium,1.0,
+Lucent Fossil,Fossil,high,2.0,
+Corroded Fossil,Fossil,low,0.3,
+Corroded Fossil,Fossil,medium,0.6,
+Corroded Fossil,Fossil,high,1.0,
+Shuddering Fossil,Fossil,low,0.3,
+Shuddering Fossil,Fossil,medium,0.6,
+Shuddering Fossil,Fossil,high,1.0,
+Perfect Fossil,Fossil,low,0.2,
+Perfect Fossil,Fossil,medium,0.5,
+Perfect Fossil,Fossil,high,0.8,
+Faceted Fossil,Fossil,low,0.05,Rare fossil node
+Faceted Fossil,Fossil,medium,0.1,
+Faceted Fossil,Fossil,high,0.2,
+Bloodstained Fossil,Fossil,low,0.03,Very rare
+Bloodstained Fossil,Fossil,medium,0.08,
+Bloodstained Fossil,Fossil,high,0.15,
+Fractured Fossil,Fossil,low,0.02,Very rare
+Fractured Fossil,Fossil,medium,0.05,
+Fractured Fossil,Fossil,high,0.1,
+Glyphic Fossil,Fossil,low,0.02,Very rare
+Glyphic Fossil,Fossil,medium,0.05,
+Glyphic Fossil,Fossil,high,0.1,
+Hollow Fossil,Fossil,low,0.02,Very rare
+Hollow Fossil,Fossil,medium,0.04,
+Hollow Fossil,Fossil,high,0.08,
+Primitive Chaotic Resonator,Resonator,low,3.0,
+Primitive Chaotic Resonator,Resonator,medium,5.0,
+Primitive Chaotic Resonator,Resonator,high,8.0,
+Potent Chaotic Resonator,Resonator,low,1.0,
+Potent Chaotic Resonator,Resonator,medium,2.0,
+Potent Chaotic Resonator,Resonator,high,3.5,
+Powerful Chaotic Resonator,Resonator,low,0.3,
+Powerful Chaotic Resonator,Resonator,medium,0.6,
+Powerful Chaotic Resonator,Resonator,high,1.0,
+Prime Chaotic Resonator,Resonator,low,0.05,Very rare
+Prime Chaotic Resonator,Resonator,medium,0.1,
+Prime Chaotic Resonator,Resonator,high,0.2,

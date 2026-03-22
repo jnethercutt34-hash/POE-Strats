@@ -1,0 +1,13 @@
+item_name,ninja_type,investment_tier,base_yield_per_map,notes
+Vivid Crystallised Lifeforce,Currency,low,50.0,No scarab - natural spawns only
+Vivid Crystallised Lifeforce,Currency,medium,150.0,Polished harvest scarab
+Vivid Crystallised Lifeforce,Currency,high,300.0,Gilded scarab + atlas passives
+Wild Crystallised Lifeforce,Currency,low,50.0,
+Wild Crystallised Lifeforce,Currency,medium,150.0,
+Wild Crystallised Lifeforce,Currency,high,300.0,
+Primal Crystallised Lifeforce,Currency,low,50.0,
+Primal Crystallised Lifeforce,Currency,medium,150.0,
+Primal Crystallised Lifeforce,Currency,high,300.0,
+Sacred Crystallised Lifeforce,Currency,low,5.0,Rare - T4 seeds
+Sacred Crystallised Lifeforce,Currency,medium,15.0,
+Sacred Crystallised Lifeforce,Currency,high,30.0,
