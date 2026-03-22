@@ -90,5 +90,5 @@ cd frontend && npm install && npm run dev
 - **Phase 2 (Profit Engine):** ✅ Complete — profit calculation with revenue/cost breakdown, meta tier derivation
 - **Phase 3 (Frontend):** ✅ Scaffolded — Dashboard, MechanicsList, MechanicDetail, Economy pages built with Tailwind dark theme
 - **Phase 4 (Advanced):** ❌ Not started — Synergy calculator (NetworkX), Patch impact LLM pipeline
-- **6 mechanics defined:** Blight, Delirium, Delve, Expedition, Harvest, Legion
+- **15 mechanics defined:** Abyss, Betrayal, Blight, Breach, Delirium, Delve, Essence, Expedition, Harbinger, Harvest, Heist, Incursion, Legion, Ritual, Sanctum
 - **Single commit history** — "cc" (14729db)
