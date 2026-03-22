@@ -4,7 +4,7 @@
 
 ### Phase 4 — Advanced Features
 - [ ] **Synergy Calculator** — Use NetworkX to load Atlas Tree JSON, calculate shortest path between mechanic notables, compare scaling_tags. Endpoint: `GET /api/synergy/{mechanic_a}/{mechanic_b}` | Effort: L | Priority: P2
-- [ ] **Patch Impact LLM Pipeline** — Script that takes patch notes text, passes to LLM with system prompt, returns buff/nerf JSON per mechanic | Effort: L | Priority: P3
+- [x] **Patch Impact LLM Pipeline** — POST /api/patch/analyze takes patch notes text, sends to Gemini 2.0 Flash with structured prompt, returns buff/nerf JSON per mechanic. Token-limited for free tier (~3K tokens/call). | Effort: L | Priority: P3 ✅
 
 ### Infrastructure
 - [x] **Add .gitignore** — Exclude `data/poe_tracker.db*`, `__pycache__`, `node_modules`, `.env`, `frontend/dist` | Effort: S | Priority: P0 ✅
@@ -19,5 +19,12 @@
 - [ ] **Validate yield data accuracy** — Current yields are estimates. Cross-reference with community data (e.g., TFT discord, CraftOfExile) | Effort: M | Priority: P2
 - [x] **Handle ninja_id mismatch** — Profit engine now uses fuzzy LIKE fallback when exact item_name match fails | Effort: S | Priority: P2 ✅
 
+## Remaining
+- [ ] **Synergy Calculator** — NetworkX atlas tree pathing, `GET /api/synergy/{a}/{b}` | Effort: L | Priority: P2 (requires atlas tree JSON data)
+- [ ] **Validate yield data accuracy** — Cross-reference yields with community data | Effort: M | Priority: P2
+
 ## Completed
-_(none yet — fresh TODOS)_
+- [x] P0: .gitignore, git hygiene, removed tracked artifacts
+- [x] P1: 9 new mechanics (15 total), CORS middleware, Vite proxy
+- [x] P2: 19 pytest tests, frontend retry/stale logic, fuzzy price matching
+- [x] P3: Gemini-powered patch notes analyzer

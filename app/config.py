@@ -4,6 +4,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 POE_LEAGUE = os.getenv("POE_LEAGUE", "Phrecia")
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "")
 DATABASE_PATH = os.getenv("DATABASE_PATH", "data/poe_tracker.db")
 NINJA_POLL_INTERVAL_MINUTES = int(os.getenv("NINJA_POLL_INTERVAL_MINUTES", "60"))
 

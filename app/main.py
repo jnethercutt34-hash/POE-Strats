@@ -9,7 +9,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from app.config import NINJA_POLL_INTERVAL_MINUTES, POE_LEAGUE
 from app.database import close_db, init_db
-from app.routers import economy, mechanics, profit
+from app.routers import economy, mechanics, patch, profit
 from app.services.data_retention import run_retention
 from app.services.mechanic_seeder import seed_mechanics
 from app.services.ninja_poller import poll_ninja
@@ -87,6 +87,7 @@ app.add_middleware(
 # Register routers
 app.include_router(economy.router)
 app.include_router(mechanics.router)
+app.include_router(patch.router)
 app.include_router(profit.router)
 
 

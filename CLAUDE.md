@@ -69,6 +69,7 @@ cd frontend && npm install && npm run dev
 - `POE_LEAGUE` — Current league name (changes every ~3 months). Currently: `Mirage`
 - `DATABASE_PATH` — SQLite path (default: `data/poe_tracker.db`)
 - `NINJA_POLL_INTERVAL_MINUTES` — Poll frequency (default: 60)
+- `GEMINI_API_KEY` — Google Gemini API key (free tier, for patch notes analysis)
 
 ## API Quick Reference
 | Method | Endpoint | Description |
@@ -84,11 +85,14 @@ cd frontend && npm install && npm run dev
 | POST | `/api/economy/retention` | Manual retention run |
 | GET | `/api/profit/?investment=medium&maps_per_hour=12` | All mechanics ranked |
 | GET | `/api/profit/{name}?investment=medium` | Detailed profit breakdown |
+| POST | `/api/patch/analyze` | Analyze patch notes via Gemini LLM |
+| GET | `/api/patch/impacts` | Get stored patch impact analyses |
+| DELETE | `/api/patch/impacts` | Clear stored patch impacts |
 
 ## Current State (as of 2026-03-22)
 - **Phase 1 (Data Pipeline):** ✅ Complete — ninja poller, mechanic seeder, yield ingestor, data retention all working
 - **Phase 2 (Profit Engine):** ✅ Complete — profit calculation with revenue/cost breakdown, meta tier derivation
 - **Phase 3 (Frontend):** ✅ Scaffolded — Dashboard, MechanicsList, MechanicDetail, Economy pages built with Tailwind dark theme
-- **Phase 4 (Advanced):** ❌ Not started — Synergy calculator (NetworkX), Patch impact LLM pipeline
+- **Phase 4 (Advanced):** 🟡 Partial — Patch impact LLM pipeline ✅ (Gemini 2.0 Flash), Synergy calculator ❌ (needs atlas tree data)
 - **15 mechanics defined:** Abyss, Betrayal, Blight, Breach, Delirium, Delve, Essence, Expedition, Harbinger, Harvest, Heist, Incursion, Legion, Ritual, Sanctum
 - **Single commit history** — "cc" (14729db)
