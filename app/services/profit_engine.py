@@ -14,6 +14,37 @@ DEFAULT_MAPS_PER_HOUR = 12
 BASE_MAP_COST_CHAOS = 2.0  # Approximate cost of a map + alch (not looked up)
 
 
+async def _get_price(db, item_name: str, ninja_type: str) -> Optional[float]:
+    """Get latest price for an item. Falls back to LIKE match if exact name fails.
+    
+    This handles poe.ninja renaming items across patches (e.g., "Exalted Orb" → "Exalted Orb (Legacy)").
+    """
+    # Try exact match first
+    cursor = await db.execute(
+        """SELECT chaos_value FROM economy_snapshot
+           WHERE item_name = ? AND ninja_type = ?
+           ORDER BY timestamp DESC LIMIT 1""",
+        (item_name, ninja_type),
+    )
+    row = await cursor.fetchone()
+    if row and row["chaos_value"] is not None:
+        return row["chaos_value"]
+
+    # Fuzzy fallback: LIKE match on the base name
+    cursor = await db.execute(
+        """SELECT chaos_value, item_name FROM economy_snapshot
+           WHERE item_name LIKE ? AND ninja_type = ?
+           ORDER BY timestamp DESC LIMIT 1""",
+        (f"%{item_name}%", ninja_type),
+    )
+    row = await cursor.fetchone()
+    if row and row["chaos_value"] is not None:
+        logger.info("Fuzzy price match: '%s' → '%s'", item_name, row["item_name"])
+        return row["chaos_value"]
+
+    return None
+
+
 async def calculate_profit(
     mechanic_name: str,
     investment_tier: str = "medium",
@@ -56,23 +87,11 @@ async def calculate_profit(
         item_name = drop["item_name"]
         base_yield = drop["base_yield_per_map"]
 
-        # Get the most recent price for this item
-        price_cursor = await db.execute(
-            """
-            SELECT chaos_value FROM economy_snapshot
-            WHERE item_name = ? AND ninja_type = ?
-            ORDER BY timestamp DESC
-            LIMIT 1
-            """,
-            (item_name, drop["ninja_type"]),
-        )
-        price_row = await price_cursor.fetchone()
-
-        if price_row is None or price_row["chaos_value"] is None:
+        # Get the most recent price for this item (with fuzzy fallback)
+        chaos_value = await _get_price(db, item_name, drop["ninja_type"])
+        if chaos_value is None:
             missing_prices.append(item_name)
             continue
-
-        chaos_value = price_row["chaos_value"]
         item_revenue = base_yield * chaos_value
         total_revenue += item_revenue
 
@@ -111,19 +130,10 @@ async def calculate_profit(
         item_name = cost["item_name"]
         quantity = cost["quantity"]
 
-        # Look up live price
-        price_cursor = await db.execute(
-            """
-            SELECT chaos_value FROM economy_snapshot
-            WHERE item_name = ? AND ninja_type = ?
-            ORDER BY timestamp DESC
-            LIMIT 1
-            """,
-            (item_name, cost["ninja_type"]),
-        )
-        price_row = await price_cursor.fetchone()
+        # Look up live price (with fuzzy fallback)
+        chaos_value = await _get_price(db, item_name, cost["ninja_type"])
 
-        if price_row is None or price_row["chaos_value"] is None:
+        if chaos_value is None:
             # Use 0 if we can't find the price — flag it
             cost_breakdown.append({
                 "item_name": item_name,
@@ -135,7 +145,6 @@ async def calculate_profit(
             missing_prices.append(f"(cost) {item_name}")
             continue
 
-        chaos_value = price_row["chaos_value"]
         item_cost = quantity * chaos_value
         total_cost += item_cost
 

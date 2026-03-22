@@ -2,12 +2,13 @@ import { useState } from 'react';
 import { useApi } from '../hooks/useApi';
 import ProfitCard from '../components/ProfitCard';
 import InvestmentToggle from '../components/InvestmentToggle';
+import StaleIndicator from '../components/StaleIndicator';
 import { RefreshCw } from 'lucide-react';
 
 export default function Dashboard() {
   const [investment, setInvestment] = useState('medium');
   const [mapsPerHour, setMapsPerHour] = useState(12);
-  const { data, loading, error, refetch } = useApi(
+  const { data, loading, error, isStale, retryCount, refetch } = useApi(
     `/api/profit/?investment=${investment}&maps_per_hour=${mapsPerHour}`
   );
 
@@ -42,12 +43,10 @@ export default function Dashboard() {
         </div>
       </div>
 
-      {/* Error */}
-      {error && (
-        <div className="bg-red-500/10 border border-red-500/30 rounded-lg p-4 mb-6 text-red-400">
-          {error}
-        </div>
-      )}
+      {/* Status indicators */}
+      <div className="mb-6">
+        <StaleIndicator isStale={isStale} retryCount={retryCount} error={error} onRetry={refetch} />
+      </div>
 
       {/* Loading */}
       {loading && !data && (
